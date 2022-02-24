@@ -4,6 +4,10 @@ A URL shortener written with [Aino](https://ainoweb.dev). Lyhyt means "short" in
 
 ## Setup
 
+PostgreSQL is required and should be setup via your package manager or [Postgres.app](https://postgresapp.com/).
+
+### Via Nix
+
 Install [the nix package manager](https://nixos.org/download.html#nix-install-macos) by following their multi-user installer. Once nix is installed, setup [direnv](https://direnv.net/) by hooking into your shell.
 
 ```bash
@@ -16,9 +20,19 @@ Once direnv is installed and your shell is restarted, clone the project and `cd`
 ```bash
 direnv allow
 
-mix deps.get
-mix ecto.create
-mix ecto.migrate
-(cd assets && yarn install && yarn build:css)
-mix run --no-halt
+setup # bin/setup
+server # bin/server
 ```
+
+You can load the application by going to [http://localhost:3000/](http://localhost:300).
+
+### Via asdf
+
+Install [asdf-vm](https://asdf-vm.com/). Once installed you can run setup.
+
+```bash
+bin/setup
+bin/server
+```
+
+You can load the application by going to [http://localhost:3000/](http://localhost:300).

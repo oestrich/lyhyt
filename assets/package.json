@@ -1,0 +1,17 @@
+{
+  "repository": {},
+  "license": "MIT",
+  "scripts": {
+    "build:css": "postcss ./css/app.scss --output ../priv/static/css/app.css",
+    "build:css:watch": "WATCH=true postcss ./css/app.scss --verbose --output ../priv/static/css/app.css --watch"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.4.0",
+    "autoprefixer": "^10.3.7",
+    "postcss": "^8.3.11",
+    "postcss-cli": "^9.0.1",
+    "postcss-scss": "^4.0.1",
+    "tailwindcss": "^3.0.0",
+    "yarn": "^1.22.10"
+  }
+}

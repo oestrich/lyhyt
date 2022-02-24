@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lyhyt</title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/assets/css/app.css" rel="stylesheet" />
+  </head>
+
+  <body class="font-sans leading-normal tracking-normal">
+    <nav class="bg-teal-800 p-2 mt-0 w-full absolute">
+      <div class="max-w-4xl mx-auto flex flex-wrap items-center">
+        <div class="flex w-full md:w-1/2 justify-center md:justify-start text-white font-extrabold">
+          <a href="<%= Routes.root_url(token) %>" class="text-white no-underline hover:text-white hover:no-underline">
+            <span class="text-2xl pl-2">Lyhyt</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container mx-auto max-w-4xl border-x-2 min-h-screen bg-gray-100">
+      <div class="pt-28 px-4 md:pt-16 md:px-16">
+        <%= if error = Session.Flash.get(token, :error) do %>
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-2" role="alert">
+            <%= error %>
+          </div>
+        <% end %>
+
+        <%= if info = Session.Flash.get(token, :info) do %>
+          <div class="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded relative mb-2" role="alert">
+            <%= info %>
+          </div>
+        <% end %>
+
+        <%= @inner_content %>
+      </div>
+    </div>
+  </body>
+</html>

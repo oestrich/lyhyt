@@ -36,3 +36,7 @@ bin/server
 ```
 
 You can load the application by going to [http://localhost:3000/](http://localhost:300).
+
+## Tests
+
+You can run the CI test suite via `bin/verify`.

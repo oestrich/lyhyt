@@ -1,4 +1,4 @@
-<p>Your link goes to <a href="%<= Routes.link_url(token, slug: @link.slug) %>" class="text-blue-600"><code><%= @link.href %></code></a></p>
+<p>Your link goes to <a href="<%= Routes.link_url(token, slug: @link.slug) %>" class="text-blue-600" target="_blank"><code class="break-words"><%= @link.href %></code></a></p>
 
 <p class="mt-2 text-gray-600 italic">Copy your link below</p>
 

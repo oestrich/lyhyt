@@ -3,14 +3,16 @@ defmodule Lyhyt.Web.Handler do
 
   @behaviour Aino.Handler
 
-  import Aino.Middleware.Routes, only: [routes: 1, get: 3, post: 3]
+  import Aino.Middleware.Routes, only: [get: 3, post: 3]
 
-  routes([
-    get("/", &Lyhyt.Web.Pages.index/1, as: :root),
-    get("/:slug/preview", &Lyhyt.Web.Links.preview/1, as: :preview),
-    post("/links", &Lyhyt.Web.Links.create/1, as: :links),
-    get("/:slug", &Lyhyt.Web.Links.show/1, as: :link)
-  ])
+  def routes() do
+    [
+      get("/", &Lyhyt.Web.Pages.index/1, as: :root),
+      get("/:slug/preview", &Lyhyt.Web.Links.preview/1, as: :preview),
+      post("/links", &Lyhyt.Web.Links.create/1, as: :links),
+      get("/:slug", &Lyhyt.Web.Links.show/1, as: :link)
+    ]
+  end
 
   @impl true
   def handle(token) do
@@ -32,4 +34,10 @@ defmodule Lyhyt.Web.Handler do
 
     Aino.Token.reduce(token, middleware)
   end
+end
+
+defmodule Lyhyt.Web.Handler.Routes do
+  require Aino.Middleware.Routes
+
+  Aino.Middleware.Routes.compile(Lyhyt.Web.Handler.routes())
 end

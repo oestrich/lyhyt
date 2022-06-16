@@ -1,6 +1,6 @@
 <p class="text-3xl mb-4">Shorten a URL</p>
 
-<form action="<%= Routes.links_url(token) %>" method="POST">
+<form action="<%= Routes.links_url(@token) %>" method="POST">
   <label class="w-full">
     <span class="sr-only">Link URL</span>
     <input required type="text" class="block w-full" name="href" id="href" placeholder="Link to shorten" />

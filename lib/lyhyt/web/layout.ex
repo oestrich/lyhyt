@@ -12,7 +12,7 @@ defmodule Lyhyt.Web.Layout do
 
   def wrap(token) do
     assigns = Map.take(token, [])
-    assigns = Map.put(assigns, :inner_content, token.response_body)
+    assigns = Map.put(assigns, :inner_content, {:safe, token.response_body})
     render(token, "app.html", assigns)
   end
 end

@@ -24,12 +24,15 @@ defmodule Lyhyt.Application do
   defp aino(config) do
     case config.environment != "test" do
       true ->
-        {Aino,
+        aino_config = %Aino.Config{
          callback: Lyhyt.Web.Handler,
          otp_app: :lyhyt,
          port: config.port,
          host: config.host,
-         environment: config.environment}
+         environment: config.environment
+        }
+
+        {Aino, aino_config}
 
       false ->
         nil

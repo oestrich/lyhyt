@@ -37,6 +37,8 @@ defmodule Lyhyt.Web.Handler do
 end
 
 defmodule Lyhyt.Web.Handler.Routes do
+  @moduledoc false
+
   require Aino.Middleware.Routes
 
   Aino.Middleware.Routes.compile(Lyhyt.Web.Handler.routes())

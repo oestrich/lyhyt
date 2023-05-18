@@ -3,39 +3,28 @@ defmodule Lyhyt.Config do
   Application config loaded from the environment
   """
 
-  alias Vapor.Provider.Dotenv
-  alias Vapor.Provider.Env
+  use Vapor.Planner
 
-  def application() do
-    Vapor.load!(application_providers())
-  end
+  dotenv()
 
-  defp application_providers() do
-    [
-      %Dotenv{},
-      %Env{
-        bindings: [
-          {:environment, "DEPLOY_ENV"},
-          {:port, "PORT", map: &String.to_integer/1},
-          {:host, "HOST"}
-        ]
-      }
-    ]
-  end
+  config :application,
+         env([
+           {:environment, "DEPLOY_ENV", default: "development"},
+           {:port, "PORT", default: 4000, map: &String.to_integer/1},
+           {:host, "HOST", default: "localhost"},
+           {:session_salt, "SESSION_SALT"},
+           {:url_port, "URL_PORT", default: 4000, map: &String.to_integer/1},
+           {:url_scheme, "URL_SCHEME", default: :http, map: &String.to_atom/1}
+         ])
 
-  def database() do
-    Vapor.load!(database_providers())
-  end
+  config :database,
+         env([
+           {:ssl, "DATABASE_SSL", map: &to_boolean/1},
+           {:url, "DATABASE_URL"},
+           {:pool_size, "POOL_SIZE", default: 5, map: &String.to_integer/1}
+         ])
 
-  defp database_providers() do
-    [
-      %Dotenv{},
-      %Env{
-        bindings: [
-          {:database_url, "DATABASE_URL"},
-          {:pool_size, "POOL_SIZE", map: &String.to_integer/1}
-        ]
-      }
-    ]
-  end
+  defp to_boolean("true"), do: true
+
+  defp to_boolean(_), do: false
 end

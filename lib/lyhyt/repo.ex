@@ -6,12 +6,14 @@ defmodule Lyhyt.Repo do
   alias Lyhyt.Config
 
   def init(_type, config) do
-    vapor_config = Config.database()
+    vapor_config = Vapor.load!(Config)
+    database_config = vapor_config.database
 
     config =
       Keyword.merge(config,
-        url: vapor_config.database_url,
-        pool_size: vapor_config.pool_size
+        ssl: database_config.ssl,
+        pool_size: database_config.pool_size,
+        url: database_config.url
       )
 
     {:ok, config}

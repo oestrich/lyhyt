@@ -7,7 +7,7 @@ defmodule Lyhyt.Application do
 
   @impl true
   def start(_type, _args) do
-    config = Config.application()
+    config = Vapor.load!(Config).application
 
     children = [
       {Lyhyt.Repo, []},
@@ -29,7 +29,12 @@ defmodule Lyhyt.Application do
           otp_app: :lyhyt,
           port: config.port,
           host: config.host,
-          environment: config.environment
+          url_port: config.url_port,
+          url_scheme: config.url_scheme,
+          environment: config.environment,
+          config: %{
+            session_salt: config.session_salt
+          }
         }
 
         {Aino, aino_config}

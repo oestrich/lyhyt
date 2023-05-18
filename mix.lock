@@ -1,5 +1,5 @@
 %{
-  "aino": {:git, "https://github.com/oestrich/aino.git", "add9290e243b310b9fccb6ff7882cc2bfc004c6c", []},
+  "aino": {:git, "https://github.com/oestrich/aino.git", "c5b76390e988a41b08f577f86afe5d21150b8a3c", []},
   "bunt": {:hex, :bunt, "0.2.0", "951c6e801e8b1d2cbe58ebbd3e616a869061ddadcc4863d0a2182541acae9a38", [:mix], [], "hexpm", "7af5c7e09fe1d40f76c8e4f9dd2be7cebd83909f31fee7cd0e9eadc567da8353"},
   "connection": {:hex, :connection, "1.1.0", "ff2a49c4b75b6fb3e674bfc5536451607270aac754ffd1bdfe175abe4a6d7a68", [:mix], [], "hexpm", "722c1eb0a418fbe91ba7bd59a47e28008a189d47e37e0e7bb85585a016b2869c"},
   "credo": {:hex, :credo, "1.6.3", "0a9f8925dbc8f940031b789f4623fc9a0eea99d3eed600fe831e403eb96c6a83", [:mix], [{:bunt, "~> 0.2.0", [hex: :bunt, repo: "hexpm", optional: false]}, {:file_system, "~> 0.2.8", [hex: :file_system, repo: "hexpm", optional: false]}, {:jason, "~> 1.0", [hex: :jason, repo: "hexpm", optional: false]}], "hexpm", "1167cde00e6661d740fc54da2ee268e35d3982f027399b64d3e2e83af57a1180"},
